@@ -1,5 +1,6 @@
 import LandingImage from "C:/Users/deken/Desktop/Boutique/src/assets/LandingImage.svg"
 import { Truck, ShieldCheck, Heart } from 'lucide-react';
+import { Link} from "react-router-dom";
 
 const LandingPage = () => {
     return (
@@ -18,10 +19,13 @@ const LandingPage = () => {
                     </p>
                     <div className="flex justify-center lg:justify-start space-x-4">
                         <button className="bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg shadow hover:shadow-lg transition">
-                            Se connecter
+                            <Link to="/con">Se connecter</Link>
                         </button>
-                        <button className="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-lg hover:bg-white hover:text-indigo-600 transition">
-                            Inscription
+                        <button className="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-lg
+                         hover:bg-white hover:text-indigo-600 transition"
+                           
+                        >
+                            <Link to="/sing">Inscription</Link>
                         </button>
                     </div>
                 </div>

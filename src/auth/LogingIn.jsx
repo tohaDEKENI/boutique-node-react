@@ -4,7 +4,7 @@ const LogingPage = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-600 to-blue-400 flex items-center justify-center p-6">
-            <div className="bg-white w-full max-w-md p-8 rounded-lg">
+            <div className="bg-white w-full max-w-md p-8 rounded-lg shadow-md">
                 <h1 className="text-indigo-600 text-center p-6 text-2xl font-extrabold">
                     Se connecter
                 </h1>
@@ -24,7 +24,7 @@ const LogingPage = () => {
                         />
 
                     </div>
-                    <button type='submit' className='text-center w-full bg-blue-600 rounded-lg py-2 text-white '
+                    <button type='submit' className='text-center w-full bg-indigo-600 rounded-lg py-2 text-white hover:bg-indigo-700'
                     >
                         Se connecter
                     </button>

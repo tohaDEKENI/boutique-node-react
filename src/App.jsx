@@ -11,6 +11,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<LandingPage></LandingPage>}></Route>
+          <Route index element={<LandingPage></LandingPage>}></Route>
           <Route path='/sing' element={<RegistrationPage/>}></Route>
           <Route path='/con' element={<LogingPage/>}></Route>
         </Routes>
