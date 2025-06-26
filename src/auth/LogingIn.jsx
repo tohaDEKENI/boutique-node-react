@@ -2,15 +2,17 @@ import { Mail, Lock } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../components/loader';
+import { useNavigate } from 'react-router-dom';
 
 // Composant de page de connexion
 const LogingPage = () => {
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [result, setResult] = useState("");
     const [resultColor, setResultColor] = useState(null);
     const [loader, setLoadder] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -39,6 +41,9 @@ const LogingPage = () => {
 
             setResult(data.message)
             localStorage.setItem("token", data.token)
+            setTimeout(()=>{
+                navigate("/home")
+            },1000)
             setResultColor("#aaf775")
         }
         catch (err) {
