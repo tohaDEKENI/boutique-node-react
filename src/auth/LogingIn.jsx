@@ -28,14 +28,20 @@ const LogingPage = () => {
 
             if (!response.ok) {
                 if (response.status === 403 && data.message === "Session expirée. Veuillez vous reconnecter.") {
+                    
                     localStorage.removeItem("token");
                     setResult(data.message);
                     setResultColor("#e6b9a6");
+                    console.log("erreur de token detecter")
                     navigate("/login");
                     return;
                 }
+
+                console.log("erreur de token detecter444")
+                window.location.href = "/login";
                 setResult(data.message)
                 setResultColor("#e6b9a6 ")
+                navigate("/login");
                 return;
             }
 
