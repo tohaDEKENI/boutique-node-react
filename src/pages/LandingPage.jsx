@@ -19,13 +19,13 @@ const LandingPage = () => {
                     </p>
                     <div className="flex justify-center lg:justify-start space-x-4">
                         <button className="bg-white text-indigo-600 font-semibold px-8 py-3 rounded-lg shadow hover:shadow-lg transition">
-                            <Link to="/con">Se connecter</Link>
+                            <Link to="/login">Se connecter</Link>
                         </button>
                         <button className="bg-transparent border-2 border-white text-white font-semibold px-8 py-3 rounded-lg
                          hover:bg-white hover:text-indigo-600 transition"
                            
                         >
-                            <Link to="/sing">Inscription</Link>
+                            <Link to="/register">Inscription</Link>
                         </button>
                     </div>
                 </div>

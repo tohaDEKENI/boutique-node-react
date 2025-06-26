@@ -1,6 +1,7 @@
 import { UserPlus, Mail, Lock } from 'lucide-react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Loader from '../components/loader';
 
 export default function RegistrationPage() {
     const [name, setUserName] = useState("");
@@ -8,15 +9,20 @@ export default function RegistrationPage() {
     const [password, setPassword] = useState("");
     const [result, setResult] = useState("");
     const [resultColor, setResultColor] = useState(null);
+    const [loader ,setLoadder] = useState(false); 
+    const navigate = useNavigate();
 
     const HandleSubmit = async (e) => {
         e.preventDefault()
+        setLoadder(true)
         try {
+            //await new Promise(resolve => setTimeout(resolve, 2000));
             const response = await fetch("http://localhost:5000/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email, password })
             })
+            
             const data = await response.json()
 
             if (!response.ok) {
@@ -25,14 +31,19 @@ export default function RegistrationPage() {
                 setResultColor("#e6b9a6 ")
                 return;
             }
-
-            console.log(data)
+            
             setResult(data.message)
             setResultColor("#aaf775")
 
+            setTimeout(()=>{
+                navigate("/login")
+            },1000)
+            
         }
         catch (err) {
             console.log("erreur cote serveru");
+        }finally{
+            setLoadder(false)
         }
     }
     return (
@@ -81,9 +92,9 @@ export default function RegistrationPage() {
                         className="w-full bg-indigo-600 text-white py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
 
                     >
-                        S'inscrire
+                       {loader ?  <Loader/>: "S'inscrire "}
                     </button>
-                    <p className='text-center text-blue-400 hover:to-blue-400'><Link to="/sing"><span className='hover:text-blue-600 transition hover:underline'
+                    <p className='text-center text-blue-400 hover:to-blue-400'><Link to="/login"><span className='hover:text-blue-600 transition hover:underline'
                     >
                         Se connecter
                     </span></Link></p>
