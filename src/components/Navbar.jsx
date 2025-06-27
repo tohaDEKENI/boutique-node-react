@@ -1,54 +1,69 @@
 import { Menu, Search, ShoppingCart, UserCog } from "lucide-react"
 import { useEffect, useState } from "react";
+
 const Navbar = () => {
+    const [search, setSearch] = useState(false);
+    const [searchValue, setsearchValue] = useState(" ");
+    const [produits, setProduits] = useState([]);
 
-
-    const [search, setSearch] = useState(false)
-    const [searchValue, setsearchValue] = useState(" ")
-    const [produits, setProduits] = useState([])
-    
     const HandleSearch = async (e) => {
         const value = e.target.value;
         setsearchValue(value);
         setSearch(value.trim() !== ""); 
-
     };
-    
 
     return (
-        <div className="shadow-md max-w-full">
-            <div className="container mx-auto max-w-5xl flex justify-between py-4  bg-white">
-                <div className="flex items-center space-x-4">
-                    <button><Menu /></button>
+        <div className="shadow-md w-full bg-white">
+            <div className="container mx-auto max-w-7xl px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                {/* Logo et menu */}
+                <div className="flex items-center justify-between sm:justify-start space-x-4">
+                    <button className="sm:hidden">
+                        <Menu />
+                    </button>
                     <h1 className="text-2xl font-extrabold">BigBang</h1>
                 </div>
-                <form action="" className="flex space-x-2 ">
-                    <div className="flex border items-center w-[400px]  px-4 rounded">
+
+                {/* Barre de recherche */}
+                <form className="flex flex-col sm:flex-row sm:space-x-2 w-full sm:w-auto gap-2 sm:gap-0">
+                    <div className="flex border items-center px-4 rounded w-full sm:w-[400px] relative">
                         <Search />
-                        <input type="search" value={searchValue} className="w-full h-full py-2 outline-none" onChange={HandleSearch} />
+                        <input
+                            type="search"
+                            value={searchValue}
+                            className="w-full h-full py-2 outline-none"
+                            onChange={HandleSearch}
+                        />
                         {search && (
-                            <div className="absolute top-16 w-96 bg-white shadow-lg rounded-md z-10">
-                               
+                            <div className="absolute top-12 left-0 w-full bg-white shadow-lg rounded-md z-10">
+                                {/* Résultats de recherche ici */}
                             </div>
                         )}
-
                     </div>
-                    <button type="submit" className="bg-blue-600 py-2 px-8 text-white rounded-md">Rechercher</button>
+                    <button type="submit" className="bg-blue-600 py-2 px-4 sm:px-8 text-white rounded-md">
+                        Rechercher
+                    </button>
                 </form>
-                <div className="flex items-center space-x-4">
-                    <UserCog className="text-blue-700" />
-                    <select name="Profile" id="" value="Profile" className="w-28">
-                        <option value="">profile</option>
-                        <option value=""></option>
-                    </select>
-                </div>
-                <div className="flex items-center">
-                    <ShoppingCart className="text-blue-600" />
-                    <p>Panier</p>
+
+                {/* Profil et panier */}
+                <div className="flex items-center justify-between sm:justify-end space-x-4 w-full sm:w-auto">
+                    <div className="flex items-center space-x-2">
+                        <UserCog className="text-blue-700" />
+                        <select name="Profile" className="w-28 border rounded px-2 py-1">
+                            <option value="">Profile</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                        <ShoppingCart className="text-blue-600" />
+                        <p>Panier</p>
+                    </div>
                 </div>
             </div>
+
+            {/* Admin button : à placer ailleurs si besoin */}
+            <button className="absolute top-2 right-2 bg-gray-100 px-2 py-1 rounded shadow">Admin</button>
         </div>
     );
-}
+};
 
 export default Navbar;

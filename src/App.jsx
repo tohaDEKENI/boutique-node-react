@@ -5,6 +5,7 @@ import LogingPage from "./auth/LogingIn"
 import { BrowserRouter as Router ,Routes,Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Valid from './auth/validattion'
+import ShowProduit from './components/showProduits'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/register' element={<RegistrationPage/>}></Route>
           <Route path='/login' element={<LogingPage/>}></Route>
           <Route path='/home' element={<Valid><Home/></Valid>}></Route>
+          <Route path='/produits/:id' element={<ShowProduit/>}></Route>
         </Routes>
       </Router>
     </>
