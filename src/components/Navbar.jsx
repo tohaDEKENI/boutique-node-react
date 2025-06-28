@@ -1,5 +1,6 @@
 import { Menu, Search, ShoppingCart, UserCog } from "lucide-react"
 import { useEffect, useState } from "react";
+import AdminAuth from "../auth/adminAuth";
 
 const Navbar = () => {
     const [search, setSearch] = useState(false);
@@ -60,8 +61,14 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Admin button : à placer ailleurs si besoin */}
-            <button className="absolute top-2 right-2 bg-gray-100 px-2 py-1 rounded shadow">Admin</button>
+             {/* ✅ Seul le bouton est protégé */}
+            <div className="absolute top-2 right-2">
+                <AdminAuth>
+                    <button className="bg-gray-100 px-2 py-1 rounded shadow">
+                        Admin
+                    </button>
+                </AdminAuth>
+            </div>
         </div>
     );
 };
