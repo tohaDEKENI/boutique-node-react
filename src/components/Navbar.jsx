@@ -1,16 +1,17 @@
 import { Menu, Search, ShoppingCart, UserCog } from "lucide-react"
 import { useEffect, useState } from "react";
 import AdminAuth from "../auth/adminAuth";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [search, setSearch] = useState(false);
-    const [searchValue, setsearchValue] = useState(" ");
+    const [searchValue, setsearchValue] = useState("");
     const [produits, setProduits] = useState([]);
 
     const HandleSearch = async (e) => {
         const value = e.target.value;
         setsearchValue(value);
-        setSearch(value.trim() !== ""); 
+        setSearch(value.trim() !== "");
     };
 
     return (
@@ -31,12 +32,14 @@ const Navbar = () => {
                         <input
                             type="search"
                             value={searchValue}
-                            className="w-full h-full py-2 outline-none"
+                            className="w-full h-full py-2 outline-none text-gray-500"
+                            placeholder="Chercher un produit"
                             onChange={HandleSearch}
                         />
                         {search && (
                             <div className="absolute top-12 left-0 w-full bg-white shadow-lg rounded-md z-10">
                                 {/* Résultats de recherche ici */}
+                                jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
                             </div>
                         )}
                     </div>
@@ -61,12 +64,14 @@ const Navbar = () => {
                 </div>
             </div>
 
-             {/* ✅ Seul le bouton est protégé */}
+            {/* ✅ Seul le bouton est protégé */}
             <div className="absolute top-2 right-2">
                 <AdminAuth>
-                    <button className="bg-gray-100 px-2 py-1 rounded shadow">
-                        Admin
-                    </button>
+                    <Link to="/admin">
+                        <button className="bg-green-700 text-white px-2 py-1 rounded shadow ">
+                            Admin
+                        </button>
+                    </Link>
                 </AdminAuth>
             </div>
         </div>

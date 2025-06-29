@@ -22,7 +22,7 @@ const Produicts = () => {
                     <div key={produict.id} className="hover:shadow-md border p-4 space-y-4 rounded-md bg-white">
                 
                         <Link to={`/produits/${produict.id}`} className="block space-y-2">
-                            <img src={produict.image_url} alt={produict.name} className="w-full h-40 object-cover rounded" />
+                            <img src={produict.image_url} alt={produict.name} className="w-full h-auto object-cover rounded" />
                             <p className="text-lg font-semibold">{produict.name}</p>
                             <p className="text-gray-700">Prix : {produict.price} MAD</p>
                         </Link>

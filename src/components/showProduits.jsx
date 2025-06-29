@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";
+import Footer from "./footer";
+import Loader from "./loader";
 
 const ShowProduit = () => {
     const { id } = useParams();
@@ -21,23 +23,24 @@ const ShowProduit = () => {
     }, []); // ✅ bonne pratique
 
     return (
-        <div>
+        <div className="bg-slate-100">
             <Navbar />
             <div className="pt-10">
-                <div className="container mx-auto max-w-2xl shadow-md p-10">
+                <div className="container mx-auto max-w-2xl shadow-md p-10  bg-white">
                     {produit && produit.produit ? (
                         <div>
-                            <img src={produit.produit.image_url} alt={produit.produit.name} className="w-full h-auto" />
+                            <img src={produit.produit.image_url} alt={produit.produit.name} className="w-full h-auto object-cover" />
                             <p className="text-xl font-bold mt-4">{produit.produit.name}</p>
                             <p className="text-gray-600 mt-2">{produit.produit.description}</p>
                             <p className="text-green-700 mt-2">prix: {produit.produit.price} MAD</p>
                             <button className="bg-blue-700 w-full py-2 rounded-md text-white">Acheter</button>
                         </div>
                     ) : (
-                        <p>Chargement du produit...</p>
+                        <Loader/>
                     )}
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
